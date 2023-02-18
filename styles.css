@@ -1,0 +1,262 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  font-family: 'Orbitron', sans-serif;
+  color: #c0c0c0;
+  font-size: 70px;
+}
+.clock {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 140px;
+}
+.first_digit_pair,
+.second_digit_pair,
+.third_digit_pair {
+  display: flex;
+  gap: 50px;
+}
+
+/* digit construction */
+
+.digit {
+  width: 122px;
+  height: 284px;
+  position: relative;
+}
+.stick {
+  background-color: #c0c0c0;
+  width: 122px;
+  height: 20px;
+  position: absolute;
+}
+.stick::after {
+  content: '';
+  border-right: 0px solid transparent;
+  border-left: 20px solid transparent;
+  border-bottom: 20px solid #000;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.stick::before {
+  content: '';
+  border-right: 20px solid transparent;
+  border-left: 0px solid transparent;
+  border-bottom: 20px solid #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.stick_top {
+  top: 0;
+  left: 0;
+}
+.stick_top_right {
+  top: 0;
+  right: 0;
+  transform: rotate(90deg) translate(58%, -255%);
+}
+
+.stick_bottom_right {
+  bottom: 0;
+  right: 0;
+
+  transform: rotate(90deg) translate(-31%, -255%);
+}
+.stick_bottom {
+  bottom: 0;
+  left: 0;
+  transform: rotate(180deg) translate(0%, -165%);
+}
+.stick_bottom_left {
+  bottom: 0;
+  left: 0;
+  transform: rotate(270deg) translate(31%, -255%);
+}
+
+.stick_top_left {
+  top: 0;
+  left: 0;
+  transform: rotate(270deg) translate(-71px, -51px);
+}
+
+.stick_middle {
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  transform: rotate(180deg) translate(50%, -30%);
+}
+
+/* number one */
+
+#number_one .stick_top,
+#number_one .stick_bottom,
+#number_one .stick_top_left,
+#number_one .stick_bottom_left,
+#number_one .stick_middle {
+  background-color: #000;
+}
+
+/* number two */
+
+#number_two .stick_top_left,
+#number_two .stick_bottom_right {
+  background-color: #000;
+}
+
+/* number three */
+
+#number_three .stick_top_left,
+#number_three .stick_bottom_left {
+  background-color: #000;
+}
+
+/* number four */
+
+#number_four .stick_top,
+#number_four .stick_bottom_left,
+#number_four .stick_bottom {
+  background-color: #000;
+}
+
+/* number five */
+
+#number_five .stick_top_right,
+#number_five .stick_bottom_left {
+  background-color: #000;
+}
+
+/* number six */
+
+#number_six .stick_top_right {
+  background-color: #000;
+}
+
+/* number seven */
+
+#number_seven .stick_top_left,
+#number_seven .stick_bottom_left,
+#number_seven .stick_bottom,
+#number_seven .stick_middle {
+  background-color: #000;
+}
+
+/* number nine */
+#number_nine .stick_bottom_left {
+  background-color: #000;
+}
+
+/* zero */
+
+#zero .stick_middle {
+  background-color: #000;
+}
+
+.date_wrapper {
+  position: absolute;
+  top: -90%;
+  right: 0;
+}
+
+.alarm_wrapper {
+  display: flex;
+  position: absolute;
+  top: -70%;
+  left: 0;
+  gap: 30px;
+  align-items: center;
+}
+.alarm_input {
+  width: 150px;
+  height: 90px;
+  font-size: 30px;
+  background-color: #c0c0c0;
+  border: none;
+  border-radius: 5px;
+}
+.alarm_button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #c0c0c0;
+  border: none;
+  font-family: inherit;
+  transition: background-color 0.5s;
+}
+
+.alarm_button:hover {
+  background-color: #e6dddd;
+}
+.alarm_message_wrapper {
+  position: absolute;
+  bottom: -80%;
+  left: 0;
+  display: none;
+  gap: 30px;
+  align-items: center;
+}
+.alarm_message {
+  font-size: 40px;
+}
+
+.alarm_cancel_button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #c0c0c0;
+  border: none;
+  font-family: inherit;
+  transition: background-color 0.5s;
+  font-size: 12px;
+}
+
+.alarm_cancel_button:hover {
+  background-color: #e6dddd;
+}
+
+.visible_item {
+  display: flex;
+}
+
+.stop_alarm_btn {
+  position: absolute;
+  bottom: -70%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translateX(-50%);
+  font-style: inherit;
+  /* font-size: 30px; */
+  border: none;
+  border-radius: 50%;
+  background-color: #c0c0c0;
+  font-family: inherit;
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.85);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.not_visible {
+  display: none;
+}
